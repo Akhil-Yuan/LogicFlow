@@ -36,13 +36,16 @@ import '@logicflow/extension/lib/style/index.css'
 import DiagramToolbar from './DiagramToolbar.vue'
 import DiagramSidebar from './DiagramSidebar.vue'
 import PropertyPanel from './PropertyPanel.vue'
+import ActorNode from './node/ActorNode'
 import CircleNode from './node/CircleNode'
 import EllipseNode from './node/EllipseNode'
 import RectNode from './node/RectNode'
 import RectRadiusNode from './node/RectRadiusNode'
 import DiamondNode from './node/DiamondNode'
 import TextNode from './node/TextNode'
+import TriangleNode from './node/TriangleNode'
 import Ployline from './node/Polyline'
+import ParallelogramNode from './node/ParallelogramNode'
 
 // const LogicFlow = window.LogicFlow
 
@@ -104,17 +107,20 @@ export default {
       })
       lf.setTheme(
         {
-          nodeText: { autoWrap: true, lineHeight: 1.5 },
-          edgeText: { autoWrap: true, lineHeight: 1.5 }
+          nodeText: { overflowMode: 'autoWrap', lineHeight: 1.5 },
+          edgeText: { overflowMode: 'autoWrap', lineHeight: 1.5 }
         }
       )
+      lf.register(ActorNode)
       lf.register(CircleNode)
       lf.register(EllipseNode)
       lf.register(RectNode)
       lf.register(RectRadiusNode)
       lf.register(DiamondNode)
       lf.register(TextNode)
+      lf.register(TriangleNode)
       lf.register(Ployline)
+      lf.register(ParallelogramNode)
       lf.setDefaultEdgeType('pro-polyline')
       lf.render(data)
       this.lf = lf
