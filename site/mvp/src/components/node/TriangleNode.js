@@ -18,8 +18,8 @@ class TriangleModel extends RectResize.model {
 
 class TriangleView extends RectResize.view {
   getResizeShape() {
-    const { x, y, width, height } = this.props.model;
-    const style = this.props.model.getNodeStyle();
+    const { x, y, width, height } = this.props.model
+    const style = this.props.model.getNodeStyle()
     const attrs = {
       ...style,
       x,
@@ -27,9 +27,9 @@ class TriangleView extends RectResize.view {
       width,
       height,
       points: [
-        [x - 50, y + 40],
-        [x - 50, y - 40],
-        [x + 50, y]
+        [x - width / 2, y + height / 2],
+        [x - width / 2, y - height / 2],
+        [x + width / 2, y]
       ]
     }
     return h('g', {}, [

@@ -38,6 +38,7 @@ import DiagramSidebar from './DiagramSidebar.vue'
 import PropertyPanel from './PropertyPanel.vue'
 import ActorNode from './node/ActorNode'
 import CircleNode from './node/CircleNode'
+import CylindeNode from './node/CylindeNode'
 import EllipseNode from './node/EllipseNode'
 import RectNode from './node/RectNode'
 import RectRadiusNode from './node/RectRadiusNode'
@@ -113,6 +114,7 @@ export default {
       )
       lf.register(ActorNode)
       lf.register(CircleNode)
+      lf.register(CylindeNode)
       lf.register(EllipseNode)
       lf.register(RectNode)
       lf.register(RectRadiusNode)

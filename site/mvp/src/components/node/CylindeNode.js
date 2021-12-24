@@ -1,9 +1,8 @@
-// import { h } from '@logicflow/core'
 import { h } from '@logicflow/core'
 import { RectResize } from '@logicflow/extension'
 import { getShapeStyleFuction, getTextStyleFunction } from './getShapeStyleUtil'
 
-class ActorModel extends RectResize.model {
+class CylindeModel extends RectResize.model {
   getShapeStyle () {
     const style = super.getShapeStyle()
     const properties = this.getProperties()
@@ -17,53 +16,50 @@ class ActorModel extends RectResize.model {
   }
 }
 
-class ActorView extends RectResize.view {
-  getResizeShape() {
+class CylindeView extends RectResize.view {
+  getResizeShape () {
     const { x, y, width, height } = this.props.model
     const style = this.props.model.getNodeStyle()
-    // 人物头部圆形
-    const circleAttrs = {
+    // 圆柱体顶部椭圆
+    const ellipseAttrs = {
       ...style,
       cx: x,
       cy: y - 1/3 * height,
-      r: 1/8 * width,
+      rx: 1/3 * width,
+      ry: 1/10 * height,
       width,
       height
     }
-    // 人物肩膀横线
+    // 圆柱体左直线 
     const pathAAttrs = {
       ...style,
-      d: `M ${x - 1/5 * width} ${y - 1/8 * height} L ${x + 1/5 * width} ${y - 1/8 * height}`
+      d: `M ${x - 1/3 * width} ${y - 1/3 * height} L ${x - 1/3 * width} ${y + 1/3 * height}`
     }
-    // 人物身体躯干竖线
+    // 圆柱体右直线
     const pathBAttrs = {
       ...style,
-      d: `M ${x} ${y - 1/3 * height + 1/8 * width} L ${x} ${y + 1/5 * height}`
+      d: `M ${x + 1/3 * width} ${y - 1/3 * height} L ${x + 1/3 * width} ${y + 1/3 * height}`
     }
-    // 人物左腿斜线
+    // 圆柱体下曲线
     const pathCAttrs = {
       ...style,
-      d: `M ${x} ${y + 1/5 * height} L ${x - 1/5 * width} ${y + 1/2 * height}`
+      d: `M ${x - 1/3 * width} ${y + 1/3 * height}
+      Q ${x} ${y + 5/9 * height} ${x + 1/3 * width} ${y + 1/3 * height}`
     }
-    // 人物右腿斜线
-    const pathDAttrs = {
-      ...style,
-      d: `M ${x} ${y + 1/5 * height} L ${x + 1/5 * width} ${y + 1/2 * height}`
-    }
-    // 人物透明背景板
-    const bgAttrs = {
-      x: x - 1/5 * width,
-      y: y - 1/2 * height,
-      width: 2/5 * width,
-      height,
+    // 圆柱体中间填充部分
+    const rectAttrs = {
+      x: x - 1/3 * width,
+      y: y - 1/3 * height,
+      width: 2/3 * width,
+      height: 2/3 * height,
       style: 'fill: transparent'
     }
     return h('g', {}, [
-      h('circle', {
-        ...circleAttrs,
+      h('ellipse', {
+        ...ellipseAttrs
       }),
       h('path', {
-        ...pathAAttrs,
+        ...pathAAttrs
       }),
       h('path', {
         ...pathBAttrs
@@ -71,19 +67,15 @@ class ActorView extends RectResize.view {
       h('path', {
         ...pathCAttrs
       }),
-      h('path', {
-        ...pathDAttrs
-      }),
       h('rect', {
-        ...bgAttrs
+        ...rectAttrs
       })
-    ]
-    );
+    ])
   }
 }
 
 export default {
-  type: 'actor',
-  view: ActorView,
-  model: ActorModel
+  type: 'cylinde',
+  model: CylindeModel,
+  view: CylindeView
 }

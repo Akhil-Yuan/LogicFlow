@@ -20,21 +20,25 @@ class ParallelogramView extends RectResize.view {
   getResizeShape() {
     const { x, y, width, height } = this.props.model;
     const style = this.props.model.getNodeStyle();
+    const pointList = [
+      [x - width / 2, y + height/2],
+      [x - width / 3, y - height/2],
+      [x + width / 2, y - height/2],
+      [x + width / 3, y + height/2]
+    ];
+    const points = pointList.map(item => {
+      return `${item[0]},${item[1]}`
+    })
     const attrs = {
       ...style,
       x,
       y,
       width,
       height,
-      points: [
-        [x - 50, y + 40],
-        [x - 30, y - 40],
-        [x + 50, y - 40],
-        [x + 30, y + 40]
-      ]
+      points: points.join(' ')
     }
-    return h("g", {}, [
-      h("polygon", { ...attrs })
+    return h('g', {}, [
+      h('polygon', { ...attrs })
     ]
     )
   }
