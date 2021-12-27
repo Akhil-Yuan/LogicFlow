@@ -33,26 +33,24 @@
         <div class="node-item" @mousedown="dragInNode('pro-text')">
           <icon-text class="svg-node" />
         </div>
-        <div class="node-item" @mousedown="dragInNode('table')">
-          <icon-table class="svg-table" />
-        </div>
+        
         <div class="node-item" @mousedown="dragInNode('left-arrow')">
-          左
+          <icon-left-arrow class="svg-node"/>
         </div>
         <div class="node-item" @mousedown="dragInNode('right-arrow')">
-          右
+          <icon-right-arrow class="svg-node" />
         </div>
         <div class="node-item" @mousedown="dragInNode('horizontal-arrow')">
-          横
+          <icon-horizontal-arrow class="svg-node" />
         </div>
         <div class="node-item" @mousedown="dragInNode('up-arrow')">
-          上
+          <icon-up-arrow class="svg-node" />
         </div>
         <div class="node-item" @mousedown="dragInNode('down-arrow')">
-          下
+          <icon-down-arrow class="svg-node" />
         </div>
         <div class="node-item" @mousedown="dragInNode('vertical-arrow')">
-          竖
+          <icon-vertical-arrow class="svg-node" />
         </div>
         <div class="node-item" @mousedown="dragInNode('image')">
           图片
@@ -83,11 +81,16 @@ import IconRectRadius from './icon/RectRadius.vue'
 import IconActor from './icon/Actor.vue'
 import IconCylinde from './icon/Cylinde.vue'
 import IconDiamond from './icon/Diamond.vue'
+import IconDownArrow from './icon/DownArrow.vue'
 import IconEllipse from './icon/Ellipse.vue'
+import IconHorizontalArrow from './icon/HorizontalArrowNode.vue'
+import IconLeftArrow from './icon/LeftArrow.vue'
+import IconUpArrow from './icon/UpArrow.vue'
 import IconParallelogram from './icon/Parallelogram.vue'
-import IconTable from './icon/Table.vue'
+import IconRightArrow from './icon/RightArrow.vue'
 import IconText from './icon/Text.vue'
 import IconTriangle from './icon/Triangle.vue'
+import IconVerticalArrow from './icon/VerticalArrowNode.vue'
 
 export default {
   name: 'DiagramSidebar',
@@ -103,11 +106,16 @@ export default {
     IconActor,
     IconCylinde,
     IconDiamond,
+    IconDownArrow,
     IconEllipse,
+    IconHorizontalArrow,
+    IconLeftArrow,
     IconParallelogram,
-    IconTable,
+    IconUpArrow,
+    IconRightArrow,
     IconText,
-    IconTriangle
+    IconTriangle,
+    IconVerticalArrow
   }
 }
 </script>
