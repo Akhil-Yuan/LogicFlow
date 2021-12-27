@@ -2,6 +2,13 @@ import { h } from '@logicflow/core'
 import RectNode from './RectNode'
 
 // 上箭头
+class UpArrowModel extends RectNode.model {
+  constructor(data, graphData) {
+    super(data, graphData);
+    this.width = 80;
+    this.height = 100;
+  }
+}
 
 class UpArrowView extends RectNode.view {
   getResizeShape() {
@@ -38,5 +45,5 @@ class UpArrowView extends RectNode.view {
 export default {
   type: 'up-arrow',
   view: UpArrowView,
-  model: RectNode.model
+  model: UpArrowModel
 }

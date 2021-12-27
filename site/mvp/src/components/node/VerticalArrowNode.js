@@ -2,6 +2,13 @@ import { h } from '@logicflow/core'
 import RectNode from './RectNode'
 
 // 竖直箭头
+class VerticalArrowModel extends RectNode.model {
+  constructor(data, graphData) {
+    super(data, graphData);
+    this.width = 80;
+    this.height = 150;
+  }
+}
 
 class VerticalArrowView extends RectNode.view {
   getResizeShape() {
@@ -44,5 +51,5 @@ class VerticalArrowView extends RectNode.view {
 export default {
   type: 'vertical-arrow',
   view: VerticalArrowView,
-  model: RectNode.model
+  model: VerticalArrowModel
 }

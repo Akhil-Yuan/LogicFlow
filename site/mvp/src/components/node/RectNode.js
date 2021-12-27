@@ -18,7 +18,8 @@ class RectNewNode extends RectResize.view {
  */
 class RectNewModel extends RectResize.model {
 
-  setToBottom () {
+  constructor(data, graphData) {
+    super(data, graphData)
     this.zIndex = 0
   }
 

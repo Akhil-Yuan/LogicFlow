@@ -2,8 +2,15 @@ import { h } from '@logicflow/core'
 import RectNode from './RectNode'
 
 // 下箭头
+class DownArrowModel extends RectNode.model {
+  constructor(data, graphData) {
+    super(data, graphData);
+    this.width = 80;
+    this.height = 100;
+  }
+}
 
-class UpArrowView extends RectNode.view {
+class DownArrowView extends RectNode.view {
   getResizeShape() {
     const { x, y, width, height } = this.props.model
     const style = this.props.model.getNodeStyle()
@@ -29,7 +36,7 @@ class UpArrowView extends RectNode.view {
     }
     
     return h('g', {}, [
-       h('polygon', { ...attrs })
+      h('polygon', { ...attrs })
     ]
     );
   }
@@ -37,6 +44,6 @@ class UpArrowView extends RectNode.view {
 
 export default {
   type: 'down-arrow',
-  view: UpArrowView,
-  model: RectNode.model
+  view: DownArrowView,
+  model: DownArrowModel
 }

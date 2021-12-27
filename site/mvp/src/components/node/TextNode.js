@@ -28,8 +28,8 @@ class TextNewNode extends TextNode {
  * model控制初始化的值
  */
 class TextNewModel extends TextNodeModel {
-  setAttributes () {
-    super.setAttributes()
+  constructor(data, graphData) {
+    super(data, graphData)
     if (!this.text.value) {
       this.text.value = 'text'
     }

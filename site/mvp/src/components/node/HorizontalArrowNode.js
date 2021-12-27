@@ -2,6 +2,13 @@ import { h } from '@logicflow/core'
 import RectNode from './RectNode'
 
 // 水平双箭头
+class HorizontalArrowModel extends RectNode.model {
+  constructor(data, graphData) {
+    super(data, graphData);
+    this.width = 150;
+    this.height = 80;
+  }
+}
 
 class HorizontalArrowView extends RectNode.view {
   getResizeShape() {
@@ -44,5 +51,5 @@ class HorizontalArrowView extends RectNode.view {
 export default {
   type: 'horizontal-arrow',
   view: HorizontalArrowView,
-  model: RectNode.model
+  model: HorizontalArrowModel
 }

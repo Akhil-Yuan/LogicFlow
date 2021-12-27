@@ -21,13 +21,10 @@ class DiamondNode extends DiamondResize.view {
  * model控制初始化的值
  */
 class DiamondModel extends DiamondResize.model {
-  setAttributes () {
-    super.setAttributes()
-    this.strokeWidth = 1
-  }
-
-  setToBottom () {
-    this.zIndex = 0
+  constructor(data, graphData) {
+    super(data, graphData);
+    this.strokeWidth = 1;
+    this.zIndex = 0;
   }
 }
 

@@ -21,42 +21,51 @@ class CylindeView extends RectResize.view {
     const { x, y, width, height } = this.props.model
     const style = this.props.model.getNodeStyle()
     // 圆柱体顶部椭圆
-    const ellipseAttrs = {
+    const ellipseAAttrs = {
       ...style,
       cx: x,
       cy: y - 1/3 * height,
-      rx: 1/3 * width,
-      ry: 1/10 * height,
+      rx: 1/2 * width,
+      ry: 1/6 * height,
       width,
       height
     }
     // 圆柱体左直线 
     const pathAAttrs = {
       ...style,
-      d: `M ${x - 1/3 * width} ${y - 1/3 * height} L ${x - 1/3 * width} ${y + 1/3 * height}`
+      d: `M ${x - 1/2 * width} ${y - 1/3 * height} L ${x - 1/2 * width} ${y + 1/3 * height}`
     }
     // 圆柱体右直线
     const pathBAttrs = {
       ...style,
-      d: `M ${x + 1/3 * width} ${y - 1/3 * height} L ${x + 1/3 * width} ${y + 1/3 * height}`
+      d: `M ${x + 1/2 * width} ${y - 1/3 * height} L ${x + 1/2 * width} ${y + 1/3 * height}`
     }
-    // 圆柱体下曲线
-    const pathCAttrs = {
+    // 圆柱体下椭圆
+    const ellipseBAttrs = {
       ...style,
-      d: `M ${x - 1/3 * width} ${y + 1/3 * height}
-      Q ${x} ${y + 5/9 * height} ${x + 1/3 * width} ${y + 1/3 * height}`
+      cx: x,
+      cy: y + 1/3 * height,
+      rx: 1/2 * width,
+      ry: 1/6 * height,
+      width,
+      height
     }
     // 圆柱体中间填充部分
     const rectAttrs = {
-      x: x - 1/3 * width,
+      ...style,
+      x: x - 1/2 * width,
       y: y - 1/3 * height,
-      width: 2/3 * width,
+      width,
       height: 2/3 * height,
-      style: 'fill: transparent'
+      fill: '#fff',
+      stroke: 'transparent'
     }
     return h('g', {}, [
       h('ellipse', {
-        ...ellipseAttrs
+        ...ellipseBAttrs
+      }),
+      h('rect', {
+        ...rectAttrs
       }),
       h('path', {
         ...pathAAttrs
@@ -64,11 +73,8 @@ class CylindeView extends RectResize.view {
       h('path', {
         ...pathBAttrs
       }),
-      h('path', {
-        ...pathCAttrs
-      }),
-      h('rect', {
-        ...rectAttrs
+      h('ellipse', {
+        ...ellipseAAttrs
       })
     ])
   }

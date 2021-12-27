@@ -4,7 +4,8 @@ class BaseNewNode extends BaseNode {
 }
 
 class BaseNewModel extends BaseNodeModel {
-  setAttributes () {
+  constructor(data, graphData) {
+    super(data, graphData)
     this.fill = 'red'
   }
 }
